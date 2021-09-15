@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: insertIntoPersonTable
+      author: Mykola_Hordieiev
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: first_name
+                  value: Vlad
+              - column:
+                  name: last_name
+                  value: last
+              - column:
+                  name: age
+                  value: 21
+              - column:
+                  name: login
+                  value: loginvlad
+            tableName: person

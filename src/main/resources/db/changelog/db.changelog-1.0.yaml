@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: createPersonTable
+      author: Mykola_Hordieiev
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: varchar(60)
+              - column:
+                  name: last_name
+                  type: varchar(60)
+              - column:
+                  name: age
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: login
+                  type: varchar(60)
+            tableName: person

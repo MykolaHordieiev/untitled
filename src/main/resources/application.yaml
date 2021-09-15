@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: database
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sas
+    password: pass
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
