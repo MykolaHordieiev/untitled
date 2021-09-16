@@ -7,11 +7,6 @@ Metadata:
     ParameterGroups:
       - 
         Label: 
-          default: "Certificate Arn"
-        Parameters:
-          - AcmCertificate
-      - 
-        Label: 
           default: "Export VPC Stack Name"
         Parameters:
           - ExportVpcStackName
@@ -24,9 +19,6 @@ Metadata:
           - KeyName
 
 Parameters:
-  AcmCertificate:
-    Description: The ARN of the AWS Certification Manager's Certificate 
-    Type: String
 
   ExportVpcStackName:
     Description: The name of the vpc stack that exports values
@@ -72,7 +64,7 @@ Resources:
             Host: '#{host}'
             Path: '/#{path}'
             Port: '443'
-            Protocol: HTTPS
+            Protocol: HTTP
             StatusCode: HTTP_301
           Type: redirect 
       LoadBalancerArn: !Ref ApplicationLoadBalancer
@@ -83,14 +75,12 @@ Resources:
   ALBListenerSslCertificate:
     Type : AWS::ElasticLoadBalancingV2::Listener
     Properties:
-      Certificates:
-        - CertificateArn: !Ref AcmCertificate
       DefaultActions:
         - Type: forward 
           TargetGroupArn: !Ref ALBTargetGroup
       LoadBalancerArn: !Ref ApplicationLoadBalancer
       Port: 443
-      Protocol: HTTPS
+      Protocol: HTTP
 
 # Create a Target Group
   ALBTargetGroup:
